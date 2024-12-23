@@ -1,0 +1,7 @@
+.backgroundPic{
+    background-image: url('https://img.freepik.com/premium-vector/ecommerce-online-shopping-marketing-concept-vector-stock-illustration_618588-583.jpg?semt=ais_hybrid');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(4px);
+    height: 100vh;
+}
