@@ -1,0 +1,7 @@
+echo ".env" >> .gitignore
+
+mongo queries return promises.
+
+when you console user._id it will result something like below, because mongo stores it as special type ObjectId.
+new ObjectId('676c3700b5cc444d8b5aa881')
+You can convert ObjectId to a string with .toString() or .valueOf().

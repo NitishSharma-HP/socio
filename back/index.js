@@ -6,12 +6,12 @@ const app = express();
 connectDb()
 
 //middleware
+app.use(express.json()); //json body parser
 import ApiResponse from './middlewares/ApiResponse.js';
 app.use(ApiResponse)
 
 //import routes
 import healthRoute from './routes/health.js';
-// import router from './routes/auth.js';
 import authRouter from './routes/auth.js';
 
 //use routes

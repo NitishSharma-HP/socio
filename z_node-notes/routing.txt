@@ -1,0 +1,12 @@
+in index.js :-
+
+import authRouter from './routes/auth.js';
+app.use('/api/auth', authRouter);
+
+------------------------------------------------------------
+
+in auth.js :-
+
+const router = express.Router();
+router.post('/login', loginController);
+router.post('/register', registerController);
