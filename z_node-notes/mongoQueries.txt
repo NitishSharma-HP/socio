@@ -1,0 +1,7 @@
+----------------------------------CREATE VS SAVE--------------------------------
+
+.create() is a one-liner that both creates and saves the document.
+.save() requires you to first create an instance of the model (using new) and then explicitly save it.
+
+.create() returns the saved document after it has been created and saved.
+.save() also returns the saved document, but it only saves an already created instance.

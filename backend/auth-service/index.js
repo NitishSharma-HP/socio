@@ -16,11 +16,13 @@ app.use(ApiResponse)
 //import routes
 import healthRoute from './routes/health.js';
 import authRouter from './routes/auth.js';
+import rolesRouter from './routes/roles.js';
 
 //use routes
 app.get('/health', healthRoute);
 
 app.use('/api/auth', authRouter);
+app.use('/api/role', rolesRouter);
 
 
 export default app;

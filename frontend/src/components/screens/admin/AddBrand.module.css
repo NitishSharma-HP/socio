@@ -1,0 +1,58 @@
+/* FormComponent.module.css */
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .formContainer label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .formContainer input[type="text"],
+  .formContainer input[type="number"],
+  .formContainer input[type="checkbox"] {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .formContainer input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .formContainer button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .formContainer button:hover {
+    background-color: #0056b3;
+  }
+  
+  .formContainer div {
+    margin-bottom: 15px;
+  }
+  
+  .backBtn{
+    padding: 8px;
+    /* position: absolute; */
+    margin: 10px;
+  }

@@ -16,7 +16,7 @@ const loginController = async(req, res)=>{
     if(!validPassword) return res.sendError(null, 'Invalid password', 400);
 
     // Create and assign a token
-    const userDetails = {id:user._id.toString(), email:user.email, name:user.name}
+    const userDetails = {id:user._id.toString(), email:user.email, name:user.name, userRole:user.role}
     const token = jwt.sign(userDetails,process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRATION});
 
     return res.sendSuccess({token, userDetails}, 'User Logged in successfully.')

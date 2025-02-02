@@ -1,0 +1,25 @@
+FileUpload.js
+
+import multer from 'multer';
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadPath = '/Users/nitishsharma/Desktop/socio/frontend/src/resources'; // path to asset folder given for testing
+        cb(null, uploadPath);
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '_' + file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
+export default upload;
+
+-----------------------------------------------------------------------------------------------
+routes.js
+
+import upload from '../utils/FileUpload.js';
+
+
+router.post('/add-category', upload.single('image'),addProdCategory);
+
+------------------------------------------------------------------------------------------------

@@ -29,9 +29,9 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   // set user details
-  const setUserDetails = useCallback((name, email, id) => {
-    setSessionUser(name, email, id);
-    setUserDetailsState({ name, email, id });
+  const setUserDetails = useCallback((name, email, id, userRole) => {
+    setSessionUser(name, email, id, userRole);
+    setUserDetailsState({ name, email, id, userRole });
   }, []);
 
   //free localstorage

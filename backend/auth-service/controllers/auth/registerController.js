@@ -4,7 +4,7 @@ import logger from '../../logger.js'
 
 const registerController = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, role } = req.body;
 
         if (!name || !email || !password) {
             return res.sendError('Please provide all the fields.');
@@ -21,7 +21,8 @@ const registerController = async (req, res) => {
         const user = await User.create({
             name,
             email,
-            password: crypPass
+            password: crypPass,
+            role
         });
         // Check if user is created
         if (!user) return res.sendError('User Registeration Failed');

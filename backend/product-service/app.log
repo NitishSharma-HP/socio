@@ -1,0 +1,2 @@
+2025-01-28T16:26:36.089Z error: Error occur in addProduct.. ValidationError: brandId: Cast to Number failed for value "67990033b38f0a16bb127c4c" (type string) at path "brandId"
+2025-01-28T16:27:19.022Z error: Error occur in addProduct.. ValidationError: brandId: Cast to Number failed for value "67990033b38f0a16bb127c4c" (type string) at path "brandId"

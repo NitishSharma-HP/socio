@@ -1,0 +1,17 @@
+
+You can pass additional data via the state property when navigating.
+This is a common approach in react-router-dom. Here's how you can do it:
+
+
+you can pass data through the navigate function's second argument (which is the state):-
+const dataToPass = { someProp: 'value' };
+navigate('/add-category', { state: dataToPass });  // prop name should be state
+
+
+Accessing the Props in the Destination Component
+In the component you're navigating to (AddCategory in this case),
+you can access the state passed via navigate using the useLocation hook from react-router-dom:
+
+import { useLocation } from 'react-router-dom';
+const location = useLocation();
+const data = location.state; // This is the data passed from the previous component

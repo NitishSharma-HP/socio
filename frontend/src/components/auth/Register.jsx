@@ -1,17 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Login.module.css';
-import { ApiService } from '../../services/ApiService';
+import useApiService  from '../../services/ApiService';
 import ToastView from '../toast/ToastView';
 import { useToast } from '../../utils/toast/ToastContext';
 import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const url = process.env.REACT_APP_AUTH_BASE_URL
   const navigate = useNavigate();
+  const { get, post } = useApiService();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [showToast, setShowToast] = useState(false)
   const { addToast, deleteToast } = useToast();
+  const [rolesList, setRolesList] = useState([]);
+  const [role, setRole] = useState();
+
+  useEffect(()=>{
+    getRolesList();
+  },[]);
+
+  const getRolesList= async(event) =>{
+    setShowToast(false);
+    const response = await get(`${url}/api/role/roles`,{});
+    if (!response.success) {
+      addToast(response?.error);
+      deleteToast(4000);
+    } else {
+      setRolesList(response?.data?.data)
+    }
+    setShowToast(true);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,10 +39,10 @@ const Register = () => {
     const reqData = {
       email: email,
       name: name,
-      password: password
+      password: password,
+      role: role
     }
-    const service = new ApiService();
-    const response = await service.post('api/auth/register',
+    const response = await post(`${url}/api/auth/register`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -42,6 +62,7 @@ const Register = () => {
     }
     setShowToast(true)
   };
+
   return (
     <div className={styles.container}>
       {showToast && <ToastView />}
@@ -83,6 +104,21 @@ const Register = () => {
             />
           </div>
 
+          <div className={styles.inputGroup}>
+          <label htmlFor="role" className={styles.label}>Role</label>
+            <select id='role'
+            name = 'role'
+            onChange= {(e)=> setRole(e.target.value)}
+            className={styles.input} 
+            required>
+            <option key='' value = ''>Select Role...</option>
+              {
+                rolesList.map((role)=>{
+                  return <option key={role._id} value = {role.id}>{role.role}</option>
+                })
+              }
+            </select>
+          </div>
           <button type="submit" className={styles.submitButton}>Register</button>
         </form>
       </div>

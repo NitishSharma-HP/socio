@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import { ApiService } from '../../services/ApiService';
+import useApiService  from '../../services/ApiService';
 import ToastView from '../toast/ToastView';
 import { useToast } from '../../utils/toast/ToastContext';
 import {useNavigate} from 'react-router-dom'
@@ -9,6 +9,7 @@ import { useUserContext } from '../../utils/session/UserContext';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { get, post } = useApiService();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showToast, setShowToast] = useState(false)
@@ -22,8 +23,8 @@ const Login = () => {
       email: email,
       password: password
     }
-    const service = new ApiService();
-    const response = await service.post('api/auth/login',
+    const url = process.env.REACT_APP_AUTH_BASE_URL;
+    const response = await post(`${url}/api/auth/login`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -38,7 +39,8 @@ const Login = () => {
       addToast(response?.data?.message);
       deleteToast(3000);
       setUserToken(response?.data?.data?.token);
-      setUserDetails(response?.data?.data?.userDetails?.name, response?.data?.data?.userDetails?.email, response?.data?.data?.userDetails?.id);
+      setUserDetails(response?.data?.data?.userDetails?.name, response?.data?.data?.userDetails?.email, 
+        response?.data?.data?.userDetails?.id, response?.data?.data?.userDetails?.userRole);
       setTimeout(() => {
         navigate('/')
       }, 3000)

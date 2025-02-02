@@ -1,0 +1,21 @@
+Why use FormData?
+
+Binary Data Handling: FormData is specifically designed to handle binary data, such as files.
+You can't simply send a file as part of a JSON object, because files need to be encoded in a way that
+the server can interpret them correctly (e.g., multipart/form-data encoding).
+
+Multipart Form Submission: FormData automatically formats the data as multipart/form-data,
+which is the standard way browsers submit forms containing file inputs.
+
+let newFormData = new FormData();
+        newFormData.append('name', formData.name);
+        newFormData.append('image', formData.image);
+        
+console.log(newFormData)  //won't work
+
+The FormData object is meant for sending data with POST requests, but it doesn't automatically 
+serialize into a simple object or string that console.log would show in the console.
+        
+         newFormData.forEach((value, key) => { 
+             console.log(key, value);
+         });
