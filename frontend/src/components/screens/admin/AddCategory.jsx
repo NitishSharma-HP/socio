@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './AddCategory.module.css';
 import useApiService  from '../../../services/ApiService';
 import { useToast } from '../../../utils/toast/ToastContext';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const FormComponent = () => {
     const navigate = useNavigate();
-    const { get, post } = useApiService();
+    const { post } = useApiService();
     const [showToast, setShowToast] = useState(false)
     const { addToast, deleteToast } = useToast();
     const [formData, setFormData] = useState({

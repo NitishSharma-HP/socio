@@ -9,7 +9,7 @@ import { useUserContext } from '../../utils/session/UserContext';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { get, post } = useApiService();
+  const { post } = useApiService();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showToast, setShowToast] = useState(false)

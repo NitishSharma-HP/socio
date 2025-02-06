@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {useUserContext} from '../utils/session/UserContext';
 
 const useApiService = () => {

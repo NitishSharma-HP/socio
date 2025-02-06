@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const ProductCard = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { get, post } = useApiService();
+    const { get } = useApiService();
     const [showToast, setShowToast] = useState(false)
     const { addToast, deleteToast } = useToast();
     const [cards, setCards] = useState([]);
@@ -19,24 +19,24 @@ const ProductCard = () => {
     },[])
 
     // not using yet,
-    const getCards = async() => {
-        const url = process.env.REACT_APP_PRODUCT_BASE_URL;
-        const id = await location.state;
-        const cards = await get(`${url}/product/get-product`,
-            {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            }
-        )
-        if (!cards.success) {
-            addToast(cards?.error);
-            deleteToast(4000);
-        } else {
-            setCards(cards?.data?.data)
-        }
-        setShowToast(true)
-    }
+    // const getCards = async() => {
+    //     const url = process.env.REACT_APP_PRODUCT_BASE_URL;
+    //     const id = await location.state;
+    //     const cards = await get(`${url}/product/get-product`,
+    //         {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         }
+    //     )
+    //     if (!cards.success) {
+    //         addToast(cards?.error);
+    //         deleteToast(4000);
+    //     } else {
+    //         setCards(cards?.data?.data)
+    //     }
+    //     setShowToast(true)
+    // }
 
     // getCardsByCategory of products
     const getCardsByCategory = async() => {

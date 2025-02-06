@@ -13,7 +13,6 @@ const FormComponent = () => {
     const { get, post } = useApiService();
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
-    const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
         description: '',
@@ -40,7 +39,8 @@ const FormComponent = () => {
             }
         )
         if (!response.success) {
-            setErrors((prev)=>setErrors(...prev,response.error));
+            addToast(response?.error);
+            deleteToast(4000);
         } else {
             setCategories(response?.data?.data)
         }
@@ -56,7 +56,8 @@ const FormComponent = () => {
             }
         )
         if (!response.success) {
-            setErrors((prev)=>setErrors(...prev,response.error));
+            addToast(response?.error);
+            deleteToast(4000);
         } else {
             setBrands(response?.data?.data)
         }

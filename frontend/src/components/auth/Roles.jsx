@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 const FormComponent = () => {
     const navigate = useNavigate();
-    const { get, post } = useApiService();
+    const { post } = useApiService();
     const [showToast, setShowToast] = useState(false)
     const { addToast, deleteToast } = useToast();
     const [formData, setFormData] = useState({
@@ -71,6 +71,7 @@ const FormComponent = () => {
     return (
         <>
         <button className={styles.backBtn} onClick={() => navigate(-1)}>Back</button>
+        {showToast && <ToastView />}
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.inputGroup}>
                 <label htmlFor="id">ID:</label>

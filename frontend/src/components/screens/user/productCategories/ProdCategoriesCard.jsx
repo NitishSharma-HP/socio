@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const ProdCategoriesCard = () => {
     const [showToast, setShowToast] = useState(false)
     const { addToast, deleteToast } = useToast();
-    const { get, post } = useApiService();
+    const { get } = useApiService();
     const [cards, setCards] = useState([]);
     const navigate = useNavigate();
 

@@ -12,7 +12,6 @@ const FormComponent = () => {
     const [showToast, setShowToast] = useState(false)
     const { addToast, deleteToast } = useToast();
     const [categories, setCategories] = useState([]);
-    const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({
         name: '',
         description: '',
@@ -35,7 +34,8 @@ const FormComponent = () => {
                 }
             )
             if (!response.success) {
-                setErrors((prev)=>setErrors(...prev,response.error));
+                addToast(response?.error);
+                deleteToast(4000);
             } else {
                 setCategories(response?.data?.data)
             }

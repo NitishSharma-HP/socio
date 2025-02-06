@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Login.module.css';
 import useApiService  from '../../services/ApiService';
 import ToastView from '../toast/ToastView';
@@ -17,11 +17,7 @@ const Register = () => {
   const [rolesList, setRolesList] = useState([]);
   const [role, setRole] = useState();
 
-  useEffect(()=>{
-    getRolesList();
-  },[]);
-
-  const getRolesList= async(event) =>{
+  const getRolesList= useCallback(async(event) =>{
     setShowToast(false);
     const response = await get(`${url}/api/role/roles`,{});
     if (!response.success) {
@@ -31,7 +27,11 @@ const Register = () => {
       setRolesList(response?.data?.data)
     }
     setShowToast(true);
-  }
+  },[]);
+
+  useEffect(()=>{
+    getRolesList();
+  },[getRolesList]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
