@@ -1,3 +1,10 @@
 2025-01-11T13:21:20.118Z error: Invalid namespace specified: /socio.users
 2025-01-11T13:23:38.122Z error: Invalid namespace specified: /socio.users
 2025-01-11T13:53:28.972Z error: Invalid namespace specified: /socio.users
+2025-02-06T14:25:51.046Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
+2025-02-06T14:33:16.872Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
+2025-02-06T14:33:34.187Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
+2025-02-06T14:33:51.135Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
+2025-02-06T14:34:07.850Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
+2025-02-06T14:34:24.439Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
+2025-02-06T14:35:42.924Z error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"
