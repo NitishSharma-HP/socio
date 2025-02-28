@@ -13,34 +13,34 @@ const ProductCard = () => {
   const [showToast, setShowToast] = useState(false)
   const { addToast, deleteToast } = useToast();
   const [cards, setCards] = useState([]);
-  const {userDetails} = useUserContext();
+  const { userDetails } = useUserContext();
 
   useEffect(() => {
-    if(location.pathname === '/get-cart'){
+    if (location.pathname === '/get-cart') {
       getCartProducts();
-    }else{
+    } else {
       getCardsByCategory();
     }
     // getCards();
   }, [location, userDetails])
 
   // not using yet,
-  const getCartProducts = async() => {
-      const url = process.env.REACT_APP_GATEWAY_BASE_URL || "http://localhost:4004";
-      const cards = await get(`${url}/api/user/get-cart/${userDetails.id}`,
-          {
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          }
-      )
-      if (!cards.success) {
-          addToast(cards?.error);
-          deleteToast(4000);
-      } else {
-          setCards(cards?.data?.data)
+  const getCartProducts = async () => {
+    const url = process.env.REACT_APP_GATEWAY_BASE_URL || "http://localhost:4004";
+    const cards = await get(`${url}/api/user/get-cart/${userDetails.id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
       }
-      setShowToast(true)
+    )
+    if (!cards.success) {
+      addToast(cards?.error);
+      deleteToast(4000);
+    } else {
+      setCards(cards?.data?.data)
+    }
+    setShowToast(true)
   }
 
   // getCardsByCategory of products
@@ -70,25 +70,25 @@ const ProductCard = () => {
   }
   const handleWishlist = (prod) => {
   }
-  const handleSaveToCart = async(prod) => {
+  const handleSaveToCart = async (prod) => {
     const url = process.env.REACT_APP_GATEWAY_BASE_URL || "http://localhost:4004";
     let endpoint = 'api/user/cart/save-to-cart';
-    const res = await post(`${url}/${endpoint}`,{
-      body:JSON.stringify({
+    const res = await post(`${url}/${endpoint}`, {
+      body: JSON.stringify({
         userId: userDetails?.id,
         products: {
           productId: prod._id,
           quantity: 1,
         }
       }),
-      headers:{
-        'Content-Type' : 'application/json'
+      headers: {
+        'Content-Type': 'application/json'
       }
     })
     if (!res.success) {
       addToast(res?.error);
       deleteToast(4000);
-    }else{
+    } else {
       addToast(res?.data?.message)
       deleteToast(4000);
     }
@@ -101,25 +101,25 @@ const ProductCard = () => {
         {showToast && <ToastView />}
         {cards.map((card) => (
           <div key={card._id} className={styles.card}>
-            <div className={styles.buttonGroup}>
-              <button className={styles.btnWishlist} onClick={() => handleWishlist(card)}>Wishlist</button>
-              <button className={styles.btnCart} onClick={() => handleSaveToCart(card)}>Add to Cart</button>
-            </div>
-              {(location.pathname === '/get-cart') ?
-            <>
-              <img src={`/resources/${card.product.image}`} alt={card.product.title} />
-              <h3>{card?.product?.name}</h3>
-              <p>{card?.product?.description}</p>
-              <p>{card?.product?.price}</p>
-            </>
-            :
-            <>
-              <img src={`/resources/${card.image}`} alt={card.title} />
-              <h3>{card.name}</h3>
-            <p>{card.description}</p>
-            <p>{card.price}</p>
-            </>
-              }
+            {!(location.pathname === '/get-cart') ?
+              <>
+                <div className={styles.buttonGroup}>
+                  <button className={styles.btnWishlist} onClick={() => handleWishlist(card)}>Wishlist</button>
+                  <button className={styles.btnCart} onClick={() => handleSaveToCart(card)}>Add to Cart</button>
+                </div>
+                <img src={`/resources/${card.image}`} alt={card.title} />
+                <h3>{card.name}</h3>
+                <p>{card.description}</p>
+                <p>{card.price}</p>
+              </>
+              :
+              <>
+                <img src={`/resources/${card.product.image}`} alt={card.product.title} />
+                <h3>{card?.product?.name}</h3>
+                <p>{card?.product?.description}</p>
+                <p>{card?.product?.price}</p>
+              </>
+            }
           </div>
         ))}
       </div>
