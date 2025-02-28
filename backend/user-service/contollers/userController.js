@@ -17,7 +17,7 @@ const getUser = async (req, res) => {
             return res.sendSuccess(null, 'User not found.')
         }
     } catch(err){
-        logger.error(err.message)
+        logger.error("Error in getUser "+err.message)
         return res.sendError(err, 'Exception', 404);
     }
 }

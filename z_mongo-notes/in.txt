@@ -1,0 +1,4 @@
+
+
+    products = await product.find({ _id: { $in: objectIds } });
+

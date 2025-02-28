@@ -1,0 +1,50 @@
+db.collection.findOneAndUpdate(
+   filter,          // Query to match the document
+   update,         // Update operation (e.g., $set, $inc)
+   options         // Optional settings
+)
+
+{ "_id": 1, "name": "John", "age": 25, "city": "New York" }
+
+Now, if we want to update John's age and return the old document:
+db.users.findOneAndUpdate(
+   { name: "John" },          // Find John
+   { $set: { age: 26 } },     // Update age to 26
+   { returnDocument: "before" }  // Return old document (default)
+)
+
+By default, findOneAndUpdate() returns the old document, but if you want the updated version:
+db.users.findOneAndUpdate(
+   { name: "John" },           
+   { $set: { age: 26 } },      
+   { returnDocument: "after" }  // Returns updated document
+)
+
+If the document does not exist, you can create it using upsert: true:
+db.users.findOneAndUpdate(
+   { name: "Alice" },          
+   { $set: { age: 22, city: "London" } },  
+   { upsert: true, returnDocument: "after" }  
+)
+
+Using $inc to Increment a Value
+Increase John's age by 1:
+db.users.findOneAndUpdate(
+   { name: "John" },
+   { $inc: { age: 1 } },
+   { returnDocument: "after" }
+)
+
+Find the oldest user and increase their age by 1:
+db.users.findOneAndUpdate(
+   {},  // Match any document
+   { $inc: { age: 1 } },
+   { sort: { age: -1 }, returnDocument: "after" } // Sort by age descending
+)
+
+*** Note:-
+
+The $ in "products.$.quantity" acts as a positional operator in MongoDB.
+It is used to update the first matching element in an array that meets the query criteria.
+
+Without $, MongoDB wouldn't know which element in the products array to update.

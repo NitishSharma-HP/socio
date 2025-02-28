@@ -4,10 +4,12 @@ import jwt from 'jsonwebtoken';
 import cors from 'cors'
 import multer from 'multer'
 import FormData from 'form-data';
+// import logger from '../user-service/logger';  // install logger in gateway also
 
 const app = express();
 const PORT = 4004;
 app.use(cors());
+app.use(express.json())
 const JWT_SECRET = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
 const upload = multer();
 
@@ -15,7 +17,6 @@ const SERVICES = {
     user: 'http://localhost:4001/api/user',
     product: 'http://localhost:4002/product',
 }
-
 function verifyToken(req, res, next) {
     const token = req.header('Authorization')?.split(' ')[1];
     if (!token) {
@@ -26,6 +27,8 @@ function verifyToken(req, res, next) {
         req.user = decoded;
         next();
       } catch (err) {
+        console.log(err.message)
+        // logger.error("Exception in verifyToken "+ err.message);
         return res.status(401).json({ message: 'Invalid token.' });
       }
 }
@@ -91,10 +94,15 @@ app.post('/product/add-product', verifyToken, checkRole([1]), upload.any(), (req
     .then(response => res.status(200).json(response.data))
     .catch(error => handleError(error, res));
 });
-app.get('/product/get-product/:id?', verifyToken, checkRole([1,2]), (req, res) => {
-    axios.get(`${SERVICES.product}/get-product/${req.params.id || ''}`)
-        .then(response => res.status(200).json(response.data))
-        .catch(error => handleError(error, res));
+app.get('/product/get-product', verifyToken, checkRole([1,2]), async (req, res) => {
+    try {
+        let { ids } = req.query;
+        if (!ids) return res.status(400).json({ message: "IDs are required" });
+        const response = await axios.get(`${SERVICES.product}/get-product`, { params: { ids } });
+        res.status(200).json(response.data);
+    } catch (error) {
+        handleError(error, res);
+    }
 });
 app.get('/product/get-product-by-category/:id?', verifyToken, checkRole([1,2]), (req, res) => {
     axios.get(`${SERVICES.product}/get-product-by-category/${req.params.id || ''}`)
@@ -118,6 +126,55 @@ app.post('/product/add-brand', verifyToken, checkRole([1]), (req, res) => {
     .catch(error => handleError(error, res));
 });
 
+
+//cart-wishlist routes
+app.get('/api/user/get-cart/:id', (req, res) => {
+    axios.get(`${SERVICES.user}/get-cart/${req.params.id || ''}`, {
+        headers: {
+            Authorization: req.headers.authorization
+        }
+    })
+    .then(response => res.status(200).json(response.data))
+    .catch(error => handleError(error, res));
+});
+
+app.get('/api/user/wishlist/:id?', verifyToken, checkRole([1,2]), (req, res) => {
+    axios.get(`${SERVICES.user}/wishlist/${req.params.id || ''}`)
+        .then(response => res.status(200).json(response.data))
+        .catch(error => handleError(error, res));
+});
+
+app.post('/api/user/cart/save-to-cart', verifyToken, checkRole([1, 2]), async (req, res) => {
+    try {
+        const response = await axios.post(`${SERVICES.user}/cart/save-to-cart`, req.body, {
+            headers: {
+                Authorization: req.headers.authorization,
+                'Content-Type': 'application/json'
+            }
+        });
+        return res.status(200).json(response.data);
+    } catch (error) {
+        handleError(error, res);
+    }
+});
+
+app.post('/api/user/cart/save-to-wishlist', verifyToken, checkRole([2]), async (req, res) => {
+    try {
+        const response = await axios.post(`${SERVICES.user}/cart/save-to-cart`, req.body, {
+            headers: {
+                Authorization: req.headers.authorization,
+                'Content-Type': 'application/json'
+            }
+        });
+        return res.status(200).json(response.data);
+    } catch (error) {
+        handleError(error, res);
+    }
+});
+
+//*** if i place 'user/:id?' api above get-cart api there will be conflicts
+//the endpoint /api/user/:id?' will conflict with this endpoint '/api/user/get-cart'
+//express will mistakenly consider 'get-cart' as ':id' of 'user/:id?' api.
 //user routes
 app.get('/api/user/:id?', verifyToken, checkRole([1,2]), (req, res) => {
     axios.get(`${SERVICES.user}/${req.params.id || ''}`)

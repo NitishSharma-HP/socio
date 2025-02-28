@@ -42,3 +42,36 @@
     padding: 10px;
     margin: 10px;
   }
+
+  .btnWishlist {
+    background-color: #ff4081;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .btnWishlist:hover {
+    background-color: #e91e63;
+  }
+  
+  .btnCart {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btnCart:hover {
+    background-color: #388e3c;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }

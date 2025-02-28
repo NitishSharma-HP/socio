@@ -8,3 +8,84 @@
 2025-02-06T14:34:07.850Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
 2025-02-06T14:34:24.439Z error: Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "User"
 2025-02-06T14:35:42.924Z error: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "User"
+2025-02-24T16:08:32.451Z error: Error in getCart: Cannot read properties of undefined (reading 'length')
+2025-02-24T16:10:41.046Z error: Error in getCart: Request failed with status code 404
+2025-02-24T16:11:00.806Z error: Error in getCart: Request failed with status code 404
+2025-02-24T16:11:14.749Z error: Error in getCart: Request failed with status code 404
+2025-02-24T16:12:19.935Z error: Error in getCart: Request failed with status code 404
+2025-02-24T16:13:16.238Z error: Error in getCart: Request failed with status code 404
+2025-02-25T16:26:55.109Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:27:14.110Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:27:20.317Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:30:42.511Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:32:12.666Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:33:44.754Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:34:16.724Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:36:15.104Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:37:59.059Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:40:49.441Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:41:45.785Z error: Error in getCart: Request failed with status code 401
+2025-02-25T16:59:46.685Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:01:05.944Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:01:25.507Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:06:20.810Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:11:27.110Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:15:07.695Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:15:44.606Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:15:57.265Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:16:22.060Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:16:29.527Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:16:41.639Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:20:09.038Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:21:31.479Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:22:07.240Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:22:45.073Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:23:12.910Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:44:07.742Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:44:38.755Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:46:25.667Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:47:34.196Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:47:45.732Z error: Error in getCart: productResponse is not defined
+2025-02-25T17:47:57.645Z error: Error in getCart: productResponse is not defined
+2025-02-25T17:48:07.112Z error: Error in getCart: productResponse is not defined
+2025-02-25T17:48:37.691Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:48:50.356Z error: Error in getCart: productResponse is not defined
+2025-02-25T17:49:06.661Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:49:21.650Z error: Error in getCart: Request failed with status code 401
+2025-02-25T17:49:44.192Z error: Error in getCart: Request failed with status code 401
+2025-02-25T18:10:16.750Z error: Error in getCart: Request failed with status code 401
+2025-02-25T18:11:23.019Z error: Error in getCart: Request failed with status code 401
+2025-02-25T18:11:45.505Z error: Error in getCart: Request failed with status code 401
+2025-02-25T18:12:00.975Z error: Error in getCart: Request failed with status code 401
+2025-02-25T18:12:34.344Z error: Error in getCart: Request failed with status code 401
+2025-02-27T16:41:26.761Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:44:12.646Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:44:25.048Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:46:14.629Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:46:14.641Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:47:40.475Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:47:40.486Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:48:17.056Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:48:17.066Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:48:55.442Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:48:55.454Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:49:15.401Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:49:15.410Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:58:47.866Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:59:05.792Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:59:28.773Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T16:59:52.651Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:00:53.028Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:03:34.185Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:05:32.587Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:05:49.283Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:08:23.542Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:10:27.830Z error: Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:12:00.758Z error: Error in getUserCast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:14:40.059Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:14:55.831Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:15:19.959Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:21:42.387Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:22:40.314Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:22:51.746Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-02-27T17:23:21.914Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"

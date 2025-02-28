@@ -12,6 +12,9 @@ const Navbar = () => {
     if(userToken && userDetails){
       setUsername(userDetails?.name)
       setIsLoggedIn(true);
+    }else{
+      setUsername('');
+      setIsLoggedIn(false);
     }
   },[userToken,userDetails])
 
@@ -29,6 +32,9 @@ const Navbar = () => {
       <div className={styles.userInfo}>
         {isLoggedIn ? (
           <>
+          <Link to='/get-cart'>
+            <span className={styles.cartPic}><img src="/resources/shopping-cart.png" width='50px' height='50px'/></span>
+          </Link>
             <span className={styles.username}>{username}</span>
             <button className={styles.logoutButton} onClick={handleLogout}>
               Logout

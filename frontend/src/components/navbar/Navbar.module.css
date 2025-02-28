@@ -55,3 +55,10 @@
     background-color: #e60000;
   }
   
+  .cartPic:hover{
+    cursor: pointer;
+  }
+  .cartPic{
+    cursor: pointer;
+    margin-right: 50px;
+  }

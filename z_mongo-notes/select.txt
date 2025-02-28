@@ -1,0 +1,17 @@
+
+const cartSchema = mongoose.Schema({
+    userId: {
+        type: String,
+        required: true,
+        index: true,  // Improves query performance
+        unique: true
+    },
+    products: [
+        {
+            productId: { type: String },
+            quantity: { type: Number, default: 1 },
+        }
+    ],
+});
+    
+const userCart = await cart.findOne({ userId }).select('products').lean(); // only select products

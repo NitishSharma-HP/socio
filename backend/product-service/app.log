@@ -1,2 +1,20 @@
 2025-01-28T16:26:36.089Z error: Error occur in addProduct.. ValidationError: brandId: Cast to Number failed for value "67990033b38f0a16bb127c4c" (type string) at path "brandId"
 2025-01-28T16:27:19.022Z error: Error occur in addProduct.. ValidationError: brandId: Cast to Number failed for value "67990033b38f0a16bb127c4c" (type string) at path "brandId"
+2025-02-25T15:59:34.889Z error: Error occur in getProducts.. TypeError: Cannot read properties of undefined (reading 'map')
+2025-02-25T16:01:16.471Z error: Error occur in getProducts.. TypeError: Cannot read properties of undefined (reading 'map')
+2025-02-25T16:01:47.035Z error: Error occur in getProducts.. TypeError: Cannot read properties of undefined (reading 'map')
+2025-02-25T16:18:00.120Z error: Error occur in getProducts.. TypeError: ids.map is not a function
+2025-02-25T16:18:35.893Z error: Error occur in getProducts.. ReferenceError: mongoose is not defined
+2025-02-25T16:19:13.290Z error: Error occur in getProducts.. ReferenceError: objectIds is not defined
+2025-02-25T16:19:25.419Z error: Error occur in getProducts.. CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "products"
+2025-02-25T16:20:47.130Z error: Error occur in getProducts.. CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "products"
+2025-02-25T16:23:57.091Z error: Error occur in getProducts.. TypeError: ids.map is not a function
+2025-02-25T16:24:27.562Z error: Error occur in getProducts.. ReferenceError: mongoose is not defined
+2025-02-25T16:25:44.721Z error: Error occur in getProducts.. CastError: Cast to ObjectId failed for value "{
+  objectIds: [
+    new ObjectId('67992a2b6d4a95cbb13d6218'),
+    new ObjectId('67a1070de32c3bb7d71698ed')
+  ]
+}" (type Object) at path "_id" for model "products"
+2025-02-25T17:12:29.726Z error: Error occurred in getProducts: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+2025-02-25T18:09:59.087Z error: Error occurred in getProducts: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer

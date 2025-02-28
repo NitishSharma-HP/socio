@@ -27,6 +27,7 @@ function App() {
               <Route path='/get-product-by-category' element={<ProductCard />} />
               <Route path='/add-category' element={<AddCategory />} />
               <Route path='/add-brand' element={<AddBrand />} />
+              <Route path='/get-cart' element={<ProductCard />} />
               <Route path="*" element={<h2>Page Not Found</h2>} />
             </Routes>
           </ToastProvider>

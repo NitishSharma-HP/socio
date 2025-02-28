@@ -2,6 +2,7 @@ import logger from '../../logger.js';
 import {prodCategories} from '../../models/prodCategories.js';
 import {product} from '../../models/product.js';
 import { brand } from '../../models/brands.js';
+import mongoose from 'mongoose';
 
 //get product categories
 const getProductCategories = async(req, res)=>{
@@ -23,23 +24,22 @@ const getProductCategories = async(req, res)=>{
 }
 
 //get products
-const getProducts = async(req, res)=>{
-    try{
-        const { id } = req.params;
-        let products;
-        
-        if (id) {
-            products = await product.findOne({ _id: id });
-        } else {
-            products = await product.find();
+const getProducts = async(req, res) => {
+    try {
+        let { ids } = req.query;
+        if (!Array.isArray(ids)) {
+            ids = ids ? ids.split(',') : [];
         }
 
-        res.sendSuccess(products);     
-    }catch(e){
-        logger.error("Error occur in getProducts.. "+e)
+        const objectIds = ids.map(id => new mongoose.Types.ObjectId(id));
+        const products = await product.find({ _id: { $in: objectIds } });
+
+        res.sendSuccess(products);
+    } catch (e) {
+        logger.error("Error occurred in getProducts: " + e);
         res.sendError(null, 'Failed to get data.');
     }
-}
+};
 
 //get products by category
 const getProductsByCategory = async(req, res)=>{

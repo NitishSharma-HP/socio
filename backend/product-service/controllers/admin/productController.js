@@ -18,7 +18,6 @@ const addProdCategory = async(req, res)=>{
 
 //add products
 const addProduct = async(req, res)=>{
-    console.log(34535)
     const {name,prodCategoryId,brandId,description,isActive,price} = req.body;
     const image = req.file ? req.file.filename : null;
     try{

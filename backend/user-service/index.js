@@ -21,7 +21,5 @@ import userRoute from './routes/user.js';
 app.get('/health', healthRoute);
 app.use('/api/user', userRoute);
 
-// app.use('/api/auth', authRouter);
-
 
 export default app;
