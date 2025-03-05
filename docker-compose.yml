@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  gatewayservice:
+    build: ./backend/api-gateway
+    container_name: gateway_service
+    restart: always
+    ports:
+      - "4004:4004"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/userDB
+
+  userservice:
+    build: ./backend/user-service
+    container_name: user-service
+    restart: always
+    ports:
+      - "4001:4001"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/userDB
+
+  productservice:
+    build: ./backend/product-service
+    container_name: product_service
+    restart: always
+    ports:
+      - "4002:4002"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/productDB
+
+  authservice:
+    build: ./backend/auth-service
+    container_name: auth_service
+    restart: always
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/authDB
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - userservice
+      - productservice
+      - authservice
+      - gatewayservice
+
+volumes:
+  mongo_data:
