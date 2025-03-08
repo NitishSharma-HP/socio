@@ -5,6 +5,7 @@ import { useToast } from '../../../../utils/toast/ToastContext';
 import ToastView from '../../../toast/ToastView';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../../../utils/session/UserContext'
+import Loader from '../../../loader/Loader';
 
 const ProductCard = () => {
   const location = useLocation();
@@ -14,37 +15,15 @@ const ProductCard = () => {
   const { addToast, deleteToast } = useToast();
   const [cards, setCards] = useState([]);
   const { userDetails } = useUserContext();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === '/get-cart') {
-      getCartProducts();
-    } else {
       getCardsByCategory();
-    }
-    // getCards();
   }, [location, userDetails])
-
-  // not using yet,
-  const getCartProducts = async () => {
-    const url = process.env.REACT_APP_GATEWAY_BASE_URL || "http://localhost:4004";
-    const cards = await get(`${url}/api/user/get-cart/${userDetails.id}`,
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      }
-    )
-    if (!cards.success) {
-      addToast(cards?.error);
-      deleteToast(4000);
-    } else {
-      setCards(cards?.data?.data)
-    }
-    setShowToast(true)
-  }
 
   // getCardsByCategory of products
   const getCardsByCategory = async () => {
+    setLoading(true);
     const url = process.env.REACT_APP_PRODUCT_BASE_URL;
     const id = await location.state;
     let endpoint = 'product/get-product-by-category';
@@ -62,6 +41,7 @@ const ProductCard = () => {
     } else {
       setCards(cards?.data?.data)
     }
+    setLoading(false)
     setShowToast(true)
   }
 
@@ -71,7 +51,8 @@ const ProductCard = () => {
   const handleWishlist = (prod) => {
   }
   const handleSaveToCart = async (prod) => {
-    const url = process.env.REACT_APP_GATEWAY_BASE_URL || "http://localhost:4004";
+    setLoading(true)
+    const url = process.env.REACT_APP_GATEWAY_BASE_URL || "";
     let endpoint = 'api/user/cart/save-to-cart';
     const res = await post(`${url}/${endpoint}`, {
       body: JSON.stringify({
@@ -92,17 +73,17 @@ const ProductCard = () => {
       addToast(res?.data?.message)
       deleteToast(4000);
     }
+    setLoading(false)
   }
 
   return (
     <>
+      <Loader loading={loading}/>  
       <button className={styles.btnBack} onClick={handleBack}>Back</button>
       <div className={styles.container}>
         {showToast && <ToastView />}
         {cards.map((card) => (
           <div key={card._id} className={styles.card}>
-            {!(location.pathname === '/get-cart') ?
-              <>
                 <div className={styles.buttonGroup}>
                   <button className={styles.btnWishlist} onClick={() => handleWishlist(card)}>Wishlist</button>
                   <button className={styles.btnCart} onClick={() => handleSaveToCart(card)}>Add to Cart</button>
@@ -111,15 +92,6 @@ const ProductCard = () => {
                 <h3>{card.name}</h3>
                 <p>{card.description}</p>
                 <p>{card.price}</p>
-              </>
-              :
-              <>
-                <img src={`/resources/${card.product.image}`} alt={card.product.title} />
-                <h3>{card?.product?.name}</h3>
-                <p>{card?.product?.description}</p>
-                <p>{card?.product?.price}</p>
-              </>
-            }
           </div>
         ))}
       </div>

@@ -6,6 +6,7 @@ import AdminNav from '../screens/admin/AdminNav';
 import Login from '../auth/Login.jsx'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+// import Loader from '../loader/Loader.jsx';
 
 const Home = () => {
     const navigate = useNavigate();

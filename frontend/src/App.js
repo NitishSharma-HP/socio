@@ -11,6 +11,7 @@ import AddProd from './components/screens/admin/AddProd';
 import AddCategory from './components/screens/admin/AddCategory';
 import AddBrand from './components/screens/admin/AddBrand';
 import ProductCard from './components/screens/user/product/ProductCard';
+import CartProductCard from './components/screens/user/cart/cartProductCard';
 function App() {
   return (
     <Router>
@@ -27,7 +28,7 @@ function App() {
               <Route path='/get-product-by-category' element={<ProductCard />} />
               <Route path='/add-category' element={<AddCategory />} />
               <Route path='/add-brand' element={<AddBrand />} />
-              <Route path='/get-cart' element={<ProductCard />} />
+              <Route path='/get-cart' element={<CartProductCard />} />
               <Route path="*" element={<h2>Page Not Found</h2>} />
             </Routes>
           </ToastProvider>

@@ -1,21 +1,23 @@
+import env from 'dotenv';
+env.config();
 import express from 'express';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import cors from 'cors'
 import multer from 'multer'
 import FormData from 'form-data';
-// import logger from '../user-service/logger';  // install logger in gateway also
+import logger from './logger.js';
 
 const app = express();
 const PORT = 4004;
 app.use(cors());
 app.use(express.json())
-const JWT_SECRET = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+const JWT_SECRET = process.env.JWT_SECRET || '';
 const upload = multer();
 
 const SERVICES = {
-    user: 'http://localhost:4001/api/user',
-    product: 'http://localhost:4002/product',
+    user: process.env.USER_URL || '',
+    product: process.env.PRODUCT_URL || '',
 }
 function verifyToken(req, res, next) {
     const token = req.header('Authorization')?.split(' ')[1];
@@ -28,7 +30,7 @@ function verifyToken(req, res, next) {
         next();
       } catch (err) {
         console.log(err.message)
-        // logger.error("Exception in verifyToken "+ err.message);
+        logger.error("Exception in verifyToken "+ err.message);
         return res.status(401).json({ message: 'Invalid token.' });
       }
 }
@@ -59,8 +61,6 @@ function createFormData(req) {
             //can also pass file size from here
         });
 
-    } else {
-        console.log('No files uploaded.');
     }
 
     return formData;
@@ -186,14 +186,17 @@ app.get('/api/user/:id?', verifyToken, checkRole([1,2]), (req, res) => {
 function handleError(error, res) {
     console.error('Error occurred:', error.message);
     if (error.response) {
+        logger.error(`From handleError in gatway ${error.message}`);
         return res.status(error.response.status).json({
             message: error.response.data.message || 'Service error occurred',
         });
     } else if (error.request) {
+        logger.error(`From handleError in gatway ${error.message}`);
         return res.status(500).json({
             message: 'No response from service, try again later',
         });
     } else {
+        logger.error(`From handleError in gatway ${error.message}`);
         return res.status(500).json({
             message: error.message,
         });

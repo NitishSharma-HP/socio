@@ -2,9 +2,8 @@ import cart from '../models/cart.js'
 import logger from '../logger.js'
 import axios from 'axios';
 
-const GATEWAY_URL = process.env.GATEWAY_URL || 'http://localhost:4004';
-
 const getCart = async (req, res) => {
+    const GATEWAY_URL = process.env.GATEWAY_URL || '';
     try {
         const userId = req.params?.id;
         if (!userId) {

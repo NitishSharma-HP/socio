@@ -89,3 +89,28 @@
 2025-02-27T17:22:40.314Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
 2025-02-27T17:22:51.746Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
 2025-02-27T17:23:21.914Z error: Error in getUser Cast to ObjectId failed for value "get-cart" (type string) at path "_id" for model "User"
+2025-03-05T16:01:54.706Z error: Error in getCart: Request failed with status code 401
+2025-03-05T16:01:54.759Z error: Error in getCart: Request failed with status code 401
+2025-03-05T16:02:07.965Z error: Error in getCart: Request failed with status code 401
+2025-03-05T16:02:08.007Z error: Error in getCart: Request failed with status code 401
+2025-03-08T08:33:29.429Z error: Error in getCart: Invalid URL
+2025-03-08T08:33:29.475Z error: Error in getCart: Invalid URL
+2025-03-08T08:33:38.994Z error: Error in getCart: Invalid URL
+2025-03-08T08:33:39.035Z error: Error in getCart: Invalid URL
+2025-03-08T08:34:18.622Z error: Error in getCart: Invalid URL
+2025-03-08T08:34:18.660Z error: Error in getCart: Invalid URL
+2025-03-08T08:36:09.119Z error: Error in getCart: Invalid URL
+2025-03-08T08:36:29.438Z error: Error in getCart: Invalid URL
+2025-03-08T08:37:20.292Z error: Error in getCart: Invalid URL
+2025-03-08T08:40:20.916Z error: Error in getCart: Invalid URL
+2025-03-08T08:40:20.956Z error: Error in getCart: Invalid URL
+2025-03-08T08:40:44.882Z error: Error in getCart: Invalid URL
+2025-03-08T08:40:44.939Z error: Error in getCart: Invalid URL
+2025-03-08T08:41:14.059Z error: Error in getCart: Invalid URL
+2025-03-08T08:41:46.196Z error: Error in getCart: BASE_URL is not defined
+2025-03-08T08:41:46.211Z error: Error in getCart: BASE_URL is not defined
+2025-03-08T08:42:24.365Z error: Error in getCart: Invalid URL
+2025-03-08T08:45:05.576Z error: Error in getCart: Invalid URL
+2025-03-08T08:45:05.618Z error: Error in getCart: Invalid URL
+2025-03-08T08:45:35.364Z error: Error in getCart: Invalid URL
+2025-03-08T08:45:35.402Z error: Error in getCart: Invalid URL
